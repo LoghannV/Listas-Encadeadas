@@ -31,6 +31,16 @@ class Lista{
         }
         this.count++
     }
+    getElementAt(position){
+        if(position>=0 && position<=this.count){
+            let node = this.head;
+            for(let i = 0;i<position && node!=null;i++){
+                node = node.next;
+            }
+            return node;
+        }
+        return undefined
+    }
     //Demais métodos da classe Lista
     //push() adicionar um elemento no fim da lista
     //inserAt(element,position) add um elemento em qualquer posicao da lista
@@ -46,5 +56,5 @@ const nova_lista = new Lista()
 nova_lista.push(2)
 nova_lista.push(14)
 nova_lista.push(6)
-document.getElementById("view").innerHTML = JSON.stringify(nova_lista)
-console.log(nova_lista)
+document.getElementById("view").innerHTML = JSON.stringify(nova_lista.getElementAt(2))
+console.log(JSON.stringify(nova_lista.getElementAt(2)))
