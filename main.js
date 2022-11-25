@@ -11,6 +11,26 @@ class Lista{
         this.head = undefined;
         this.count = 0;
     }
+    push(element){
+        const node = new Node(element);
+       
+        if(this.head == null)
+        {
+            this.head = node
+        }
+        else
+        {
+            let current = this.head;
+
+            while(current.next !=null)
+            {
+                current = current.next
+            }
+            current.next = node;
+
+        }
+        this.count++
+    }
     //Demais métodos da classe Lista
     //push() adicionar um elemento no fim da lista
     //inserAt(element,position) add um elemento em qualquer posicao da lista
@@ -21,3 +41,10 @@ class Lista{
     //isEmpty() retorna se lista esta vazia 
     //size() retorna o tamanho da lista 
 }
+
+const nova_lista = new Lista()
+nova_lista.push(2)
+nova_lista.push(14)
+nova_lista.push(6)
+document.getElementById("view").innerHTML = JSON.stringify(nova_lista)
+console.log(nova_lista)
