@@ -41,11 +41,26 @@ class Lista{
         }
         return undefined
     }
+    insertAt(element,position){
+        if(position>=0 && position<=this.count){
+            let node = new Node(element)
+            if(position==0){
+                const current = this.head;
+                node.next = current;
+                this.head = node;
+            }else{
+                const previous = this.getElementAt(position - 1)
+                const current = previous.next
+                previous.next = node
+                node.next = current
+            }
+            this.count++
+            return true
+        }
+        return false
+    }
     //Demais métodos da classe Lista
-    //push() adicionar um elemento no fim da lista
-    //inserAt(element,position) add um elemento em qualquer posicao da lista
     //remove() remove um elemento da lista
-    //getElementAt(position) retornar o elemento da posicao especifica da lista 
     //indexOf(element) retornar o indice do elemento da lista 
     //removeAt(position) remover o elemento de uma posicao especifica da lista 
     //isEmpty() retorna se lista esta vazia 
@@ -56,5 +71,9 @@ const nova_lista = new Lista()
 nova_lista.push(2)
 nova_lista.push(14)
 nova_lista.push(6)
-document.getElementById("view").innerHTML = JSON.stringify(nova_lista.getElementAt(2))
-console.log(JSON.stringify(nova_lista.getElementAt(2)))
+nova_lista.push(7)
+nova_lista.push(5)
+nova_lista.insertAt(17,2)
+
+//document.getElementById("view").innerHTML = JSON.stringify(nova_lista,null,2)
+console.log(JSON.stringify(nova_lista,null,2))
